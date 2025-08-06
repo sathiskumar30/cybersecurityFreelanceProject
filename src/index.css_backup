@@ -1,0 +1,252 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Cybersecurity Portfolio Design System - Rich Colors */
+
+@layer base {
+  :root {
+    /* Light Mode - Primary (Updated to light colors only) */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+
+    /* Light Cybersecurity Brand Colors */
+    --cyber-red: 0 65% 75%;
+    --cyber-red-dark: 0 55% 65%;
+    --cyber-red-light: 0 75% 85%;
+    
+    --cyber-blue: 220 70% 75%;
+    --cyber-blue-dark: 220 60% 65%;
+    --cyber-blue-light: 220 80% 85%;
+    
+    --cyber-gray: 220 8% 75%;
+    --cyber-gray-light: 220 5% 90%;
+    --cyber-gray-dark: 220 10% 65%;
+
+    /* Enhanced System Colors - Light only */
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 220 80% 85%;
+
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Light backgrounds and surfaces */
+    --gradient-cyber: linear-gradient(135deg, hsl(var(--cyber-blue)), hsl(var(--cyber-red)));
+    --gradient-glow: linear-gradient(135deg, hsl(var(--cyber-blue) / 0.3), hsl(var(--cyber-red) / 0.3));
+    --gradient-surface: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
+
+    /* Light shadows & effects */
+    --shadow-cyber: 0 10px 25px -5px hsl(var(--cyber-blue) / 0.15);
+    --shadow-glow: 0 0 20px hsl(var(--cyber-blue) / 0.2);
+    --shadow-red-glow: 0 0 20px hsl(var(--cyber-red) / 0.2);
+
+    /* Animation Variables */
+    --transition-cyber: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    --bounce-cyber: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --popover: 0 0% 100%;
+
+    --popover-foreground: 0 0% 3.9%;
+
+    --chart-1: 12 76% 61%;
+
+    --chart-2: 173 58% 39%;
+
+    --chart-3: 197 37% 24%;
+
+    --chart-4: 43 74% 66%;
+
+    --chart-5: 27 87% 67%;
+  }
+
+  .dark {
+    /* Dark Mode - Secondary */
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+
+    /* Dark Cyber Colors */
+    --cyber-red: 0 90% 60%;
+    --cyber-red-dark: 0 85% 50%;
+    --cyber-red-light: 0 95% 70%;
+    
+    --cyber-blue: 220 95% 55%;
+    --cyber-blue-dark: 220 90% 45%;
+    --cyber-blue-light: 220 100% 70%;
+
+    --cyber-gray: 220 8% 75%;
+    --cyber-gray-light: 220 5% 15%;
+    --cyber-gray-dark: 220 10% 8%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --primary-glow: 220 100% 70%;
+
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Dark Mode Gradients */
+    --gradient-cyber: linear-gradient(135deg, hsl(var(--cyber-blue)), hsl(var(--cyber-red)));
+    --gradient-glow: linear-gradient(135deg, hsl(var(--cyber-blue) / 0.9), hsl(var(--cyber-red) / 0.9));
+    --gradient-surface: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
+
+    /* Enhanced Dark Shadows */
+    --shadow-cyber: 0 25px 50px -12px hsl(var(--cyber-blue) / 0.4);
+    --shadow-glow: 0 0 40px hsl(var(--cyber-blue) / 0.5);
+    --shadow-red-glow: 0 0 40px hsl(var(--cyber-red) / 0.5);
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Orbitron', monospace;
+    font-weight: 600;
+  }
+}
+
+@layer components {
+  /* Light Button Variants - No Gradients */
+  .btn-cyber {
+    @apply relative overflow-hidden bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-xl
+           transition-all duration-300 transform hover:scale-105 hover:shadow-lg;
+  }
+
+  .btn-cyber-outline {
+    @apply relative border-2 border-primary text-primary bg-transparent
+           px-8 py-4 rounded-xl font-semibold transition-all duration-300
+           hover:bg-primary hover:text-primary-foreground hover:shadow-lg;
+  }
+
+  /* Cyber Glow Effects */
+  .cyber-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .cyber-glow-red {
+    box-shadow: var(--shadow-red-glow);
+  }
+
+  /* Mega Menu Styles */
+  .mega-menu {
+    @apply absolute top-full left-0 w-full bg-card/95 backdrop-blur-lg
+           border-t border-border shadow-cyber opacity-0 invisible
+           transition-all duration-500 ease-out transform translate-y-4;
+  }
+
+  .mega-menu.active {
+    @apply opacity-100 visible translate-y-0;
+    height: 50vh;
+  }
+
+  /* 3D Transform Utilities */
+  .transform-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  /* Cyber Grid Pattern */
+  .cyber-grid {
+    background-image: 
+      linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  /* Glowing text effect */
+  .text-glow {
+    text-shadow: 0 0 10px hsl(var(--primary) / 0.5);
+  }
+
+  .text-glow-red {
+    text-shadow: 0 0 10px hsl(var(--accent) / 0.5);
+  }
+}
+
+
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
