@@ -44,10 +44,12 @@ const Header = () => {
   ];
 
   const handleMegaMenuEnter = (menuId: string) => {
+    console.log('Entering menu:', menuId);
     setActiveMegaMenu(menuId);
   };
 
   const handleMegaMenuLeave = () => {
+    console.log('Leaving menu');
     setActiveMegaMenu(null);
   };
 
@@ -72,18 +74,21 @@ const Header = () => {
             {navigation.map((item) => (
               <div
                 key={item.id}
-                className="relative"
+                className="relative group"
                 onMouseEnter={() => handleMegaMenuEnter(item.id)}
                 onMouseLeave={handleMegaMenuLeave}
               >
-                <button className="text-foreground hover:text-primary transition-colors duration-300 font-medium py-6">
+                <button className="text-foreground group-hover:text-primary transition-colors duration-300 font-medium py-6">
                   {item.name}
                 </button>
+                
                 {activeMegaMenu === item.id && (
-                  <MegaMenu
-                    isActive={true}
-                    items={item.items}
-                  />
+                  <div className="absolute left-0 right-0 top-full pt-2 z-[1000]">
+                    <MegaMenu
+                      isActive={true}
+                      items={item.items}
+                    />
+                  </div>
                 )}
               </div>
             ))}

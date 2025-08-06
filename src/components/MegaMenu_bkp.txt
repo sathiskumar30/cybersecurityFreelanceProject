@@ -1,0 +1,76 @@
+import React, { useEffect, useState } from 'react';
+
+interface MegaMenuItem {
+  name: string;
+  href: string;
+  icon: string;
+}
+
+interface MegaMenuProps {
+  isActive: boolean;
+  items: MegaMenuItem[];
+}
+
+export const MegaMenu: React.FC<MegaMenuProps> = ({ isActive, items }) => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    if (isActive) {
+      setMounted(true);
+    } else {
+      const timer = setTimeout(() => setMounted(false), 300); // Match transition duration
+      return () => clearTimeout(timer);
+    }
+  }, [isActive]);
+
+  if (!mounted && !isActive) return null;
+
+  return (
+    <div 
+      className={`fixed inset-x-0 top-0 w-screen bg-card/95 backdrop-blur-lg border-t border-border shadow-lg z-50 transition-all duration-300 ease-in-out ${
+        isActive ? 'translate-y-[50vh] opacity-100' : '-translate-y-full opacity-0'
+      }`}
+      style={{ height: '50vh' }}
+    >
+      <div className="container mx-auto px-6 py-12 h-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 h-full">
+          {items.map((item) => (
+            <a
+              key={item.name}
+              href={item.href}
+              className="group p-6 rounded-xl bg-background border border-border hover:border-primary transition-all duration-300 transform hover:scale-105"
+            >
+              <div className="flex items-center space-x-4">
+                <div className="text-4xl">{item.icon}</div>
+                <div>
+                  <h3 className="font-orbitron font-semibold text-foreground group-hover:text-primary transition-colors">
+                    {item.name}
+                  </h3>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Learn more about our {item.name.toLowerCase()} services
+                  </p>
+                </div>
+              </div>
+              <div className="mt-4 flex items-center text-sm text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Explore →
+              </div>
+            </a>
+          ))}
+        </div>
+        
+        {/* Additional CTA Section */}
+        <div className="mt-12 p-8 rounded-2xl bg-primary text-primary-foreground text-center">
+          <h3 className="font-orbitron text-2xl font-bold mb-4">
+            Need Custom Security Solutions?
+          </h3>
+          <p className="text-lg opacity-90 mb-6">
+            Our experts can design tailored cybersecurity strategies for your unique needs
+          </p>
+          <button className="bg-background text-primary px-8 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300">
+            Schedule Consultation
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
