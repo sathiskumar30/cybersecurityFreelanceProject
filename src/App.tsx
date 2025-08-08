@@ -6,11 +6,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import ServicesPage from "./pages/Services";
 import NotFound from "./pages/NotFound";
+import SplashCursor from "./components/ui/cursorBackgroundEffect";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
+    <SplashCursor />
     {/* <TooltipProvider> */}
       {/* <Toaster /> */}
       {/* <Sonner /> */}

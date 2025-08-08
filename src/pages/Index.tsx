@@ -3,16 +3,18 @@ import Header from '@/components/Header';
 import HeroLight from '@/components/HeroLight';
 import Services from '@/components/Services';
 import FooterLight from '@/components/FooterLight';
+import Home from './Testing/HomeTestPage';
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
       <main>
-        <HeroLight />
-        <Services />
+        <Home />
+        {/* <HeroLight /> */}
+        {/* <Services /> */}
       </main>
-      <FooterLight />
+      {/* <FooterLight /> */}
     </div>
   );
 };
