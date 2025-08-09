@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { MegaMenu } from './MegaMenu';
 import { ThemeToggle } from './ThemeToggle';
@@ -7,6 +7,21 @@ import { Shield, Menu, X } from 'lucide-react';
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
+  const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const navContainerRef = useRef<HTMLDivElement | null>(null);
+  const [highlight, setHighlight] = useState<{ left: number; width: number; visible: boolean }>({ left: 0, width: 0, visible: false });
+
+  const clearCloseTimer = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+  };
+
+  const startCloseTimer = (delay: number = 200) => {
+    clearCloseTimer();
+    closeTimeoutRef.current = setTimeout(() => setActiveMegaMenu(null), delay);
+  };
 
   const navigation = [
     {
@@ -44,69 +59,85 @@ const Header = () => {
   ];
 
   const handleMegaMenuEnter = (menuId: string) => {
-    console.log('Entering menu:', menuId);
     setActiveMegaMenu(menuId);
+    clearCloseTimer();
   };
 
-  const handleMegaMenuLeave = () => {
-    console.log('Leaving menu');
-    setActiveMegaMenu(null);
+  const handleNavMouseLeave = () => {
+    startCloseTimer();
+    setHighlight((h) => ({ ...h, visible: false }));
+  };
+
+  const updateHighlightFromButton = (buttonEl: HTMLButtonElement | null) => {
+    if (!buttonEl || !navContainerRef.current) return;
+    const containerRect = navContainerRef.current.getBoundingClientRect();
+    const btnRect = buttonEl.getBoundingClientRect();
+    const left = btnRect.left - containerRect.left + navContainerRef.current.scrollLeft;
+    setHighlight({ left, width: btnRect.width, visible: true });
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-transparent rounded-b-2xl">
       <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <div className="flex items-center space-x-3">
+        <div className="grid grid-cols-[auto_1fr_auto] items-center h-20 gap-4">
+          {/* Logo (Left) */}
+          <div className="flex items-center space-x-3 justify-start">
             <div className="relative">
-              <Shield className="w-8 h-8 text-primary animate-pulse-glow" />
-              <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl"></div>
+              <Shield className="w-8 h-8 text-primary" />
+              {/* <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl"></div> */}
             </div>
             <div className="text-xl font-orbitron font-bold text-foreground">
-              <span className="text-primary">Cyber</span>
-              <span className="text-accent">Guard</span>
+              <span className="text-primary">Company </span>
+              <span className="text-accent">Name</span>
             </div>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8 relative">
-            {navigation.map((item) => (
-              <div
-                key={item.id}
-                className="relative group"
-                onMouseEnter={() => handleMegaMenuEnter(item.id)}
-                onMouseLeave={handleMegaMenuLeave}
-              >
-                <button className="text-foreground group-hover:text-primary transition-colors duration-300 font-medium py-6">
-                  {item.name}
-                </button>
-                
-                {activeMegaMenu === item.id && (
-                  <div className="absolute left-0 right-0 top-full pt-2 z-[1000]">
-                    <MegaMenu
-                      isActive={true}
-                      items={item.items}
-                    />
-                  </div>
-                )}
-              </div>
-            ))}
-            <a href="/about" className="text-foreground hover:text-primary transition-colors duration-300 font-medium py-6">
-              About
-            </a>
-            <a href="/contact" className="text-foreground hover:text-primary transition-colors duration-300 font-medium py-6">
-              Contact
-            </a>
+          {/* Desktop Navigation (Center) */}
+          <nav
+            className="hidden lg:flex items-center justify-center relative"
+            onMouseLeave={handleNavMouseLeave}
+            onMouseEnter={clearCloseTimer}
+          >
+            <div
+              ref={navContainerRef}
+              className="relative inline-flex items-center gap-2 rounded-full bg-background/70 border border-border px-2 py-1.5 shadow-sm backdrop-blur-sm"
+            >
+              {/* Sliding pill highlight */}
+              <span
+                className={`absolute top-1 bottom-1 rounded-full bg-card shadow ${highlight.visible ? 'opacity-100' : 'opacity-0'} transition-all duration-300 ease-out`}
+                style={{ left: `${highlight.left}px`, width: `${highlight.width}px` }}
+              />
+
+              {navigation.map((item) => (
+                <div
+                  key={item.id}
+                  className="relative z-10"
+                  onMouseEnter={(e) => {
+                    handleMegaMenuEnter(item.id);
+                    updateHighlightFromButton(e.currentTarget.querySelector('button'));
+                  }}
+                >
+                  <button
+                    className="relative text-md text-foreground/90 hover:text-foreground font-medium rounded-full px-4 py-2 transition-colors duration-300"
+                  >
+                    {item.name}
+                  </button>
+                </div>
+              ))}
+            </div>
           </nav>
 
-          {/* Actions */}
-          <div className="flex items-center space-x-4">
+          {/* Actions (Right) */}
+          <div className="flex items-center justify-end space-x-4">
             <ThemeToggle />
-            <Button className="btn-cyber hidden lg:inline-flex">
-              Get Started
+            <Button className="relative group hidden lg:inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white bg-gradient-to-r from-primary to-accent shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.04] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50">
+              <span className="relative z-10">Get Started</span>
+              <span className="relative z-10 text-lg transition-transform duration-300 group-hover:translate-x-0.5">→</span>
+              <span aria-hidden className="absolute inset-0 rounded-full ring-1 ring-white/20" />
+              <span aria-hidden className="pointer-events-none absolute -inset-px rounded-full bg-gradient-to-r from-white/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <span aria-hidden className="absolute left-[-30%] top-0 h-full w-1/3 -skew-x-12 bg-white/40 blur-xl opacity-0 group-hover:opacity-60 group-hover:translate-x-[240%] transition-all duration-700" />
             </Button>
-            
+
             {/* Mobile Menu Button */}
             <button
               className="lg:hidden p-2 text-foreground hover:text-primary transition-colors"
@@ -116,6 +147,16 @@ const Header = () => {
             </button>
           </div>
         </div>
+
+        {/* Shared Mega Menu (opens once; swaps content on hover) */}
+        {activeMegaMenu && (
+          <MegaMenu
+            isActive={!!activeMegaMenu}
+            items={navigation.find(n => n.id === activeMegaMenu)?.items || []}
+            onMouseEnter={clearCloseTimer}
+            onMouseLeave={handleNavMouseLeave}
+          />
+        )}
 
         {/* Mobile Menu */}
         {isMenuOpen && (

@@ -23,6 +23,7 @@ export const MegaMenu: React.FC<MegaMenuProps> = ({
   onMouseLeave 
 }) => {
   const [mounted, setMounted] = useState(false);
+  const [contentVisible, setContentVisible] = useState(true);
   const menuRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<NodeJS.Timeout>();
 
@@ -42,6 +43,13 @@ export const MegaMenu: React.FC<MegaMenuProps> = ({
     };
   }, [isActive]);
 
+  // Smoothly animate content when items change (swap effect)
+  useEffect(() => {
+    setContentVisible(false);
+    const id = setTimeout(() => setContentVisible(true), 10);
+    return () => clearTimeout(id);
+  }, [items]);
+
   if (!mounted && !isActive) return null;
 
   const filteredItems = activeCategory 
@@ -53,22 +61,21 @@ export const MegaMenu: React.FC<MegaMenuProps> = ({
       ref={menuRef}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      className={`fixed inset-x-0 top-[64px] w-screen bg-card/95 backdrop-blur-lg border-t border-border shadow-lg z-50 transition-all duration-500 ease-in-out ${
+      className={`fixed top-20 left-1/2 -translate-x-1/2 w-[min(92vw,1100px)] bg-white/10 dark:bg-white/5 backdrop-blur-xl border border-gray-400/30 dark:border-gray-500/25 rounded-2xl shadow-2xl z-50 transition-all duration-500 ease-in-out ${
         isActive ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0'
       }`}
-      style={{ height: '50vh' }}
     >
-      <div className="container mx-auto px-6 py-12 h-full">
-        <div 
-          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 h-full transition-all duration-500 ease-in-out ${
-            isActive ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+      <div className="px-6 py-8">
+        <div
+          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-500 ease-in-out ${
+            isActive ? (contentVisible ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0') : 'translate-y-4 opacity-0'
           }`}
         >
           {filteredItems.map((item) => (
             <a
               key={item.name}
               href={item.href}
-              className="group p-6 rounded-xl bg-background border border-border hover:border-primary transition-all duration-500 transform hover:scale-105 hover:shadow-xl"
+              className="group p-6 rounded-xl bg-white/5 dark:bg-white/5 backdrop-blur-sm border border-gray-400/30 dark:border-gray-500/25 hover:border-primary/60 outline outline-1 outline-gray-400/50 dark:outline-gray-500/30 group-hover:outline-transparent transition-all duration-500 transform hover:scale-[1.02] hover:shadow-xl"
             >
               <div className="flex items-center space-x-4">
                 <div className="text-4xl group-hover:scale-110 transition-transform duration-500">
@@ -83,26 +90,8 @@ export const MegaMenu: React.FC<MegaMenuProps> = ({
                   </p>
                 </div>
               </div>
-              <div className="mt-4 flex items-center text-sm text-primary opacity-0 transform translate-x-[-10px] group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500">
-                Explore →
-              </div>
             </a>
           ))}
-        </div>
-        
-        {/* Additional CTA Section */}
-        <div className={`mt-12 p-8 rounded-2xl bg-primary text-primary-foreground text-center transition-all duration-500 ease-in-out ${
-          isActive ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-        }`}>
-          <h3 className="font-orbitron text-2xl font-bold mb-4">
-            Need Custom Security Solutions?
-          </h3>
-          <p className="text-lg opacity-90 mb-6">
-            Our experts can design tailored cybersecurity strategies for your unique needs
-          </p>
-          <button className="bg-background text-primary px-8 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-500 hover:scale-105">
-            Schedule Consultation
-          </button>
         </div>
       </div>
     </div>
