@@ -9,6 +9,17 @@ import StarBorder from '@/components/ui/ReactBits/Starbordereffect';
 // import Web3Background from '@/components/ui/ReactBits/Web3Background';
 import ShieldCanvas from '@/components/ui/ReactBits/ShieldCanvas';
 import Spline from '@splinetool/react-spline';
+import GlitchText from '@/components/ui/ReactBits/GlitchEffect';
+import TrueFocus from '@/components/ui/ReactBits/TrueFocus';
+import I6LandingPage from './ServicesPage';
+import { ScrollTrigger } from 'gsap/all';
+import Carousel from '@/components/ui/ReactBits/Carousal';
+import { Section } from 'lucide-react';
+import CardSwap, { Card } from '@/components/ui/ReactBits/CardSwap';
+import ScrollVelocity from '@/components/ui/ReactBits/ScrollVelocity';
+
+
+gsap.registerPlugin(ScrollTrigger);
 
 
 export default function Home() {
@@ -76,12 +87,14 @@ export default function Home() {
         }
     }, []);
 
-    return (
-        // <div className="w-full min-h-screen bg-gradient-to-br from-blue-50 via-cyan-50 to-purple-50 text-gray-800">
-        // <div className="w-full min-h-screen bg-gradient-to-br from-blue-500 via-cyan-50 to-purple-50 text-gray-800">
+    gsap.to('.box', {
+        scrollTrigger: '.box', // start the animation when ".box" enters the viewport (once)
+        x: 500
+    });
 
-        // <div className="w-full bg-gray-0 text-gray-800">
-        <div className="w-full min-h-screen bg-gradient-to-br from-blue-500 via-cyan-50 to-purple-50 text-gray-800">
+    return (
+
+        <div className="w-full bg-gray-0 text-gray-800">
 
             <section
                 ref={sectionRef}
@@ -92,22 +105,10 @@ export default function Home() {
                     scene='https://my.spline.design/nexbotrobotcharacterconcept-jmlT2gO0EiVvU6OnjQnpOcmw/'
                 /> */}
 
-                <iframe src='https://my.spline.design/nexbotrobotcharacterconcept-jmlT2gO0EiVvU6OnjQnpOcmw/' frameborder='0' width='100%' height='100%'></iframe>
-
-                {/* 3D background removed; we render a single 3D object at right */}
-                {/* Background removed per request */}
+                {/* <iframe src='https://my.spline.design/nexbotrobotcharacterconcept-jmlT2gO0EiVvU6OnjQnpOcmw/' frameborder='0' width='100%' height='100%'></iframe> */}
 
 
-                <div className="absolute z-10 text-center">
-                    {/* <p className="text-8xl font-bold leading-[1.1] pb-1 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-700">
-                        We
-                    </p>
-                    <p className="text-8xl font-bold leading-[1.1] pb-1 bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-blue-700">
-                        Secure You
-                    </p>
-                    <p className="text-8xl font-bold leading-[1.1] pb-1 bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-blue-700">
-                        From Digital World
-                    </p> */}
+                <div className="absolute left-10 bottom-30 z-10 text-left">
 
                     <p className="text-7xl font-bold leading-[1.1] pb-1 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-blue-800">
                         We are
@@ -115,48 +116,117 @@ export default function Home() {
                     <p className="text-7xl font-bold leading-[1.1] pb-1 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-blue-800">
                         Defeneder of
                     </p>
-                    <p className="text-7xl font-bold leading-[1.1] pb-1 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-blue-800">
-                        the Digital Future
-                    </p>
-
-
-                    <p className='text-left text-lg text-red-600 max-w-xl mx'>
-                        Leveraging AI precision, fortifying Web3 ecosystems, and safeguarding emerging technologies — delivering trusted protection for the next generation of digital innovation. From decentralized finance to advanced cloud infrastructures, we ensure your assets remain resilient, compliant, and future-ready.
-                    </p>
-
-                    {/* 
-                    <p
-                        ref={ShinetextRef}
-                        className="text-left text-lg text-gray-600 relative z-10"
-                    >
-                        Leveraging AI precision, fortifying Web3 ecosystems, and safeguarding emerging technologies — delivering trusted protection for the next generation of digital innovation. From decentralized finance to advanced cloud infrastructures, we ensure your assets remain resilient, compliant, and future-ready.
-                    </p> */}
-
-                    {/* <div ref={shineRef} className="absolute top-0 left-0 h-full w-[50%] bg-gradient-to-r from-transparent via-white/60 to-transparent skew-x-12 pointer-events-none" /> */}
 
                 </div>
 
 
-                {/* <div className="absolute right-8 bottom-15 z-10">
-                    <p className="text-8xl font-bold leading-[1.1] pb-1 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-700">
-                        of the
-                    </p>
-                    <p className="text-8    xl font-bold leading-[1.1] pb-1 bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-blue-700">
-                        Digital Future
-                    </p>
-                </div>
 
                 <div className="absolute right-8 bottom-15 z-10">
-                      <p className='text-left text-lg text-gray-600 max-w-xl mx'>
-                        Leveraging AI precision, fortifying Web3 ecosystems, and safeguarding emerging technologies — delivering trusted protection for the next generation of digital innovation. From decentralized finance to advanced cloud infrastructures, we ensure your assets remain resilient, compliant, and future-ready.
-                    </p>
-                </div> */}
 
-                {/* Right-side 3D shield */}
-                <div className="absolute right-6 bottom-6 md:right-12 md:bottom-12 w-[320px] h-[420px] md:w-[420px] md:h-[520px] z-10">
-                    {/* <ShieldCanvas /> */}
+
+                    <TrueFocus
+                        sentence="Innovation Unlocked"
+                        manualMode={false}
+                        blurAmount={5}
+                        borderColor="red"
+                        animationDuration={2}
+                        pauseBetweenAnimations={1}
+                    />
+
+                    <TrueFocus
+                        sentence=" By AI"
+                        manualMode={false}
+                        blurAmount={5}
+                        borderColor="red"
+                        animationDuration={2}
+                        pauseBetweenAnimations={1}
+                    />
                 </div>
+
+
             </section>
+
+            <section
+                className='w-full'
+            >
+            <I6LandingPage />
+            </section>
+
+            
+                    
+            {/* <ScrollVelocity
+                texts={['React Bits', 'Scroll Down']}
+                velocity={100}
+                className="custom-scroll-text"
+            /> */}
+            {/* Start */}
+
         </div>
     );
 }
+
+
+
+
+
+// <div className="w-full min-h-screen bg-gradient-to-br from-blue-50 via-cyan-50 to-purple-50 text-gray-800">
+// <div className="w-full min-h-screen bg-gradient-to-br from-blue-500 via-cyan-50 to-purple-50 text-gray-800">
+// {/* <div className="w-full min-h-screen bg-gradient-to-br from-blue-500 via-cyan-50 to-purple-50 text-gray-800"> */}
+
+
+{/* <GlitchText
+                        speed={2}
+                        enableShadows={true}
+                        enableOnHover={false}
+                        className='custom-class'
+                    >
+                        the Digital Future
+                    </GlitchText> */}
+
+
+{/* Right-side 3D shield */ }
+{/* <div className="absolute right-6 bottom-6 md:right-12 md:bottom-12 w-[320px] h-[420px] md:w-[420px] md:h-[520px] z-10">
+                    <ShieldCanvas />
+                </div> */}
+
+
+
+{/* 
+            <section
+                className='flex flex-row gap-4 '
+            > */}
+
+{/* <Carousel
+                    baseWidth={window.innerWidth/2}
+                    autoplay={true}
+                    autoplayDelay={3000}
+                    pauseOnHover={true}
+                    loop={true}
+                    round={false}
+                />
+
+                <Carousel
+                    baseWidth={window.innerWidth/2}
+                    autoplay={true}
+                    autoplayDelay={3000}
+                    pauseOnHover={true}
+                    loop={true}
+                    round={false}
+                /> */}
+
+{/* </section> */ }
+
+
+{/* <section
+                className='w-full'
+            > */}
+
+{/* <div>
+                    Sathis Kumar Sathis kumar Sathis kumar 
+                </div> */}
+
+
+
+
+
+{/* </section> */ }
