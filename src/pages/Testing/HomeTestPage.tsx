@@ -25,6 +25,7 @@ import InfiniteScroll from '@/components/ui/ReactBits/infiniteScroll';
 import Lottie from 'lottie-react';
 import lottieAnimationObject from '../../components/ui/Assistant-Bot.json';
 import LightRays from '@/components/ui/ReactBits/LightRay';
+import { burpsuite, cymulate, maltego, metasploit } from './Image';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -101,29 +102,29 @@ export default function Home() {
 
     const items = [
         {
-            image: 'https://picsum.photos/300/300?grayscale',
-            link: 'https://google.com/',
-            title: 'Item 1',
-            description: 'This is pretty cool, right?'
-        },
-        {
-            image: 'https://picsum.photos/400/400?grayscale',
-            link: 'https://google.com/',
-            title: 'Item 2',
-            description: 'This is pretty cool, right?'
-        },
-        {
-            image: 'https://picsum.photos/500/500?grayscale',
-            link: 'https://google.com/',
-            title: 'Item 3',
-            description: 'This is pretty cool, right?'
-        },
-        {
-            image: 'https://picsum.photos/600/600?grayscale',
-            link: 'https://google.com/',
-            title: 'Item 4',
-            description: 'This is pretty cool, right?'
-        }
+            image: burpsuite,
+            link: "https://google.com/",
+            title: "Burp Suite",
+            description: "Burp Suite",
+          },
+          {
+            image: metasploit,
+            link: "https://google.com/",
+            title: "MetaSploit",
+            description: "MetaSploit",
+          },
+          {
+            image: cymulate ,
+            link: "https://google.com/",
+            title: "Cymulate",
+            description: "Cymulate",
+          },
+          {
+            image: maltego,
+            link: "https://google.com/",
+            title: "MaltEgo",
+            description: "MaltEgo",
+          },
     ];
 
 
@@ -288,7 +289,7 @@ export default function Home() {
             >
                 {/* <RollingGallery autoplay={false} pauseOnHover={true} /> */}
                 <div style={{ height: '600px', position: 'relative' }}>
-                    <CircularGallery bend={3} textColor="#ffffff" borderRadius={0.05} scrollEase={0.02} />
+                    <CircularGallery bend={3} textColor="#010100" borderRadius={0.05} scrollEase={0.02} />
                 </div>
             </section>
 

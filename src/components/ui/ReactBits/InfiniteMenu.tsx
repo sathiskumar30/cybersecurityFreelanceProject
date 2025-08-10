@@ -1,6 +1,7 @@
 import { FC, useRef, useState, useEffect, MutableRefObject } from "react";
 import { mat4, quat, vec2, vec3 } from "gl-matrix";
 import "./InfiniteMenu.css";
+import { burpsuite, cymulate, maltego, metasploit } from "@/pages/Testing/Image";
 
 const discVertShaderSource = `#version 300 es
 
@@ -1223,10 +1224,28 @@ class InfiniteGridMenu {
 
 const defaultItems: MenuItem[] = [
   {
-    image: "https://picsum.photos/900/900?grayscale",
+    image: burpsuite,
     link: "https://google.com/",
-    title: "",
-    description: "",
+    title: "Burp Suite",
+    description: "Burp Suite",
+  },
+  {
+    image: metasploit,
+    link: "https://google.com/",
+    title: "MetaSploit",
+    description: "MetaSploit",
+  },
+  {
+    image: cymulate ,
+    link: "https://google.com/",
+    title: "Cymulate",
+    description: "Cymulate",
+  },
+  {
+    image: maltego,
+    link: "https://google.com/",
+    title: "MaltEgo",
+    description: "MaltEgo",
   },
 ];
 

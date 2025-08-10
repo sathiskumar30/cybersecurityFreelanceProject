@@ -36,6 +36,7 @@
     font-size: 4rem;
     left: 1.6em;
     top: 50%;
+    color: white;
   }
   
   .action-button-icon {
@@ -73,6 +74,7 @@
     font-size: 1.5rem;
     right: 1%;
     transform: translate(0, -50%);
+    color: white;
   }
   
   .face-description.active {

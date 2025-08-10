@@ -78,18 +78,18 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-transparent rounded-b-2xl">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 py-3">
         <div className="grid grid-cols-[auto_1fr_auto] items-center h-20 gap-4">
           {/* Logo (Left) */}
           <div className="flex items-center space-x-3 justify-start">
-            <div className="relative">
+            {/* <div className="relative">
               <Shield className="w-8 h-8 text-primary" />
-              {/* <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl"></div> */}
-            </div>
-            <div className="text-xl font-orbitron font-bold text-foreground">
+              <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl"></div> */}
+            {/* </div> */}
+            {/* <div className="text-xl font-orbitron font-bold text-foreground">
               <span className="text-primary">Company </span>
               <span className="text-accent">Name</span>
-            </div>
+            </div> */}
           </div>
 
           {/* Desktop Navigation (Center) */}
@@ -98,10 +98,21 @@ const Header = () => {
             onMouseLeave={handleNavMouseLeave}
             onMouseEnter={clearCloseTimer}
           >
+
             <div
               ref={navContainerRef}
-              className="relative inline-flex items-center gap-2 rounded-full bg-background/70 border border-border px-2 py-1.5 shadow-sm backdrop-blur-sm"
+              className="relative inline-flex items-center gap-2 rounded-full bg-background/70 border border-border px-2 py-3 shadow-sm backdrop-blur-sm"
             >
+              <div className="flex items-center space-x-3 justify-start pl-2 pr-[150px]">
+                <div className="relative">
+                  <Shield className="w-8 h-8 text-primary" />
+                  {/* <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl"></div> */}
+                </div>
+                <div className="text-xl font-orbitron font-bold text-foreground">
+                  <span className="text-primary">Company </span>
+                  <span className="text-accent">Name</span>
+                </div>
+              </div>
               {/* Sliding pill highlight */}
               <span
                 className={`absolute top-1 bottom-1 rounded-full bg-card shadow ${highlight.visible ? 'opacity-100' : 'opacity-0'} transition-all duration-300 ease-out`}
@@ -124,19 +135,31 @@ const Header = () => {
                   </button>
                 </div>
               ))}
+              <span
+                className='pl-[150px] pr-2'
+              >
+                <ThemeToggle />
+                <Button className="relative group hidden lg:inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white bg-gradient-to-r from-primary to-accent shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.04] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50">
+                  <span className="relative z-10">Get Started</span>
+                  <span className="relative z-10 text-lg transition-transform duration-300 group-hover:translate-x-0.5">→</span>
+                  <span aria-hidden className="absolute inset-0 rounded-full ring-1 ring-white/20" />
+                  <span aria-hidden className="pointer-events-none absolute -inset-px rounded-full bg-gradient-to-r from-white/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <span aria-hidden className="absolute left-[-30%] top-0 h-full w-1/3 -skew-x-12 bg-white/40 blur-xl opacity-0 group-hover:opacity-60 group-hover:translate-x-[240%] transition-all duration-700" />
+                </Button>
+              </span>
             </div>
           </nav>
 
           {/* Actions (Right) */}
           <div className="flex items-center justify-end space-x-4">
-            <ThemeToggle />
-            <Button className="relative group hidden lg:inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white bg-gradient-to-r from-primary to-accent shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.04] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50">
+            {/* <ThemeToggle /> */}
+            {/* <Button className="relative group hidden lg:inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white bg-gradient-to-r from-primary to-accent shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.04] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50">
               <span className="relative z-10">Get Started</span>
               <span className="relative z-10 text-lg transition-transform duration-300 group-hover:translate-x-0.5">→</span>
               <span aria-hidden className="absolute inset-0 rounded-full ring-1 ring-white/20" />
               <span aria-hidden className="pointer-events-none absolute -inset-px rounded-full bg-gradient-to-r from-white/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <span aria-hidden className="absolute left-[-30%] top-0 h-full w-1/3 -skew-x-12 bg-white/40 blur-xl opacity-0 group-hover:opacity-60 group-hover:translate-x-[240%] transition-all duration-700" />
-            </Button>
+            </Button> */}
 
             {/* Mobile Menu Button */}
             <button

@@ -9,12 +9,14 @@ import {
   FiLayout,
 } from "react-icons/fi";
 import "./Carousel.css";
+import { elk, logarthm, qreader, sentinal, wazuh } from "@/pages/Testing/Image";
 
 export interface CarouselItem {
   title: string;
   description: string;
   id: number;
   icon: React.ReactElement;
+  img:any;
 }
 
 export interface CarouselProps {
@@ -27,36 +29,43 @@ export interface CarouselProps {
   round?: boolean;
 }
 
+// sentinal , qreader , wazuh , logarthm , elk
+
 const DEFAULT_ITEMS: CarouselItem[] = [
   {
-    title: "Text Animations",
+    title: "Sentinal",
     description: "Cool text animations for your projects.",
     id: 1,
     icon: <FiFileText className="carousel-icon" />,
+    img: sentinal,
   },
   {
-    title: "Animations",
+    title: "Q Radar",
     description: "Smooth animations for your projects.",
     id: 2,
     icon: <FiCircle className="carousel-icon" />,
+    img: qreader,
   },
   {
-    title: "Components",
+    title: "Wazuh",
     description: "Reusable components for your projects.",
     id: 3,
     icon: <FiLayers className="carousel-icon" />,
+    img: wazuh,
   },
   {
-    title: "Backgrounds",
+    title: "Logarthm",
     description: "Beautiful backgrounds and patterns for your projects.",
     id: 4,
     icon: <FiLayout className="carousel-icon" />,
+    img: logarthm,
   },
   {
-    title: "Common UI",
+    title: "ELK Stack",
     description: "Common UI components are coming soon!",
     id: 5,
     icon: <FiCode className="carousel-icon" />,
+    img: elk,
   },
 ];
 
@@ -74,7 +83,7 @@ export default function Carousel({
   loop = false,
   round = false,
 }: CarouselProps): React.JSX.Element {
-    
+
   const containerPadding = 16;
   const itemWidth = baseWidth - containerPadding * 2;
   const trackItemOffset = itemWidth + GAP;
@@ -160,11 +169,11 @@ export default function Carousel({
   const dragProps = loop
     ? {}
     : {
-        dragConstraints: {
-          left: -trackItemOffset * (carouselItems.length - 1),
-          right: 0,
-        },
-      };
+      dragConstraints: {
+        left: -trackItemOffset * (carouselItems.length - 1),
+        right: 0,
+      },
+    };
 
   return (
     <div
@@ -208,13 +217,43 @@ export default function Carousel({
                 height: round ? itemWidth : "100%",
                 rotateY: rotateY,
                 ...(round && { borderRadius: "50%" }),
+                backgroundImage: `url(${item?.img})`,
+                backgroundSize: "cover", // ensures the image covers the area
+                backgroundPosition: "center", // centers the image
+                backgroundRepeat: "no-repeat",
               }}
               transition={effectiveTransition}
             >
-              <div className={`carousel-item-header ${round ? "round" : ""}`}>
+              <div 
+                className={`carousel-item-header ${round ? "round" : ""}`}
+                 style={{
+                  margin:5,
+                  background: "rgba(128, 128, 128, 0.35)", // semi-transparent grey
+                  backdropFilter: "blur(10px)", // frosted glass
+                  WebkitBackdropFilter: "blur(10px)", // Safari support
+                  padding: "0.75rem",
+                  borderRadius: "12px",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
                 <span className="carousel-icon-container">{item.icon}</span>
               </div>
-              <div className="carousel-item-content">
+              {/* <img src={item?.img} style={{ objectFit:'contain' }} /> */}
+              <div 
+                className="carousel-item-content"
+                style={{
+                  margin:5,
+                  background: "rgba(128, 128, 128, 0.35)",
+                  backdropFilter: "blur(10px)",
+                  WebkitBackdropFilter: "blur(10px)",
+                  padding: "1rem",
+                  borderRadius: "12px",
+                  color: "white", // makes text stand out
+                  marginTop: "1rem",
+                }}
+              >
                 <div className="carousel-item-title">{item.title}</div>
                 <p className="carousel-item-description">{item.description}</p>
               </div>
@@ -227,9 +266,8 @@ export default function Carousel({
           {items.map((_, index) => (
             <motion.div
               key={index}
-              className={`carousel-indicator ${
-                currentIndex % items.length === index ? "active" : "inactive"
-              }`}
+              className={`carousel-indicator ${currentIndex % items.length === index ? "active" : "inactive"
+                }`}
               animate={{
                 scale: currentIndex % items.length === index ? 1.2 : 1,
               }}

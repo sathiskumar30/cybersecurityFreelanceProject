@@ -2,6 +2,7 @@ import { Camera, Mesh, Plane, Program, Renderer, Texture, Transform } from "ogl"
 import { useEffect, useRef } from "react";
 
 import "./CircularGallery.css";
+import { burpsuite, cymulate, logos, metasploit, openvas, Services,  Services2, Services3, Services5, Services6, Services7, sqlmap } from "@/pages/Testing/Image";
 
 type GL = Renderer["gl"];
 
@@ -471,55 +472,48 @@ class App {
     borderRadius: number,
     font: string
   ) {
+
     const defaultItems = [
       {
-        image: `https://picsum.photos/seed/1/800/600?grayscale`,
-        text: "Bridge",
+        image: Services,
+        text: "Detection and Direction Services",
       },
       {
-        image: `https://picsum.photos/seed/2/800/600?grayscale`,
-        text: "Desk Setup",
+        image: Services2,
+        text: "Threat Hunting",
       },
       {
-        image: `https://picsum.photos/seed/3/800/600?grayscale`,
-        text: "Waterfall",
+        image: Services3,
+        text: "VAPT",
       },
       {
-        image: `https://picsum.photos/seed/4/800/600?grayscale`,
-        text: "Strawberries",
+        image: Services5,
+        text: "Business Process Outsourcing",
       },
       {
-        image: `https://picsum.photos/seed/5/800/600?grayscale`,
-        text: "Deep Diving",
+        image: Services6,
+        text: "Red Teaming",
       },
       {
-        image: `https://picsum.photos/seed/16/800/600?grayscale`,
-        text: "Train Track",
+        image: Services7,
+        text: "Blue Teaming",
       },
-      {
-        image: `https://picsum.photos/seed/17/800/600?grayscale`,
-        text: "Santorini",
-      },
-      {
-        image: `https://picsum.photos/seed/8/800/600?grayscale`,
-        text: "Blurry Lights",
-      },
-      {
-        image: `https://picsum.photos/seed/9/800/600?grayscale`,
-        text: "New York",
-      },
-      {
-        image: `https://picsum.photos/seed/10/800/600?grayscale`,
-        text: "Good Boy",
-      },
-      {
-        image: `https://picsum.photos/seed/21/800/600?grayscale`,
-        text: "Coastline",
-      },
-      {
-        image: `https://picsum.photos/seed/12/800/600?grayscale`,
-        text: "Palm Trees",
-      },
+      // {
+      //   image: `https://picsum.photos/seed/9/800/600?grayscale`,
+      //   text: "New York",
+      // },
+      // {
+      //   image: `https://picsum.photos/seed/10/800/600?grayscale`,
+      //   text: "Good Boy",
+      // },
+      // {
+      //   image: `https://picsum.photos/seed/21/800/600?grayscale`,
+      //   text: "Coastline",
+      // },
+      // {
+      //   image: `https://picsum.photos/seed/12/800/600?grayscale`,
+      //   text: "Palm Trees",
+      // },
     ];
     const galleryItems = items && items.length ? items : defaultItems;
     this.mediasImages = galleryItems.concat(galleryItems);
@@ -652,7 +646,7 @@ interface CircularGalleryProps {
 export default function CircularGallery({
   items,
   bend = 3,
-  textColor = "#ffffff",
+  textColor = "#010100",
   borderRadius = 0.05,
   font = "bold 30px Figtree",
   scrollSpeed = 2,
