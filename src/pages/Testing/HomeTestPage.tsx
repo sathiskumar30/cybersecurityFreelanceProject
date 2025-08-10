@@ -96,6 +96,8 @@ export default function Home() {
 
         <div className="w-full bg-gray-0 text-gray-800">
 
+        // Frist Section Start
+
             <section
                 ref={sectionRef}
                 className="bg-inherit relative w-full h-screen overflow-hidden flex items-center justify-center"
@@ -105,7 +107,7 @@ export default function Home() {
                     scene='https://my.spline.design/nexbotrobotcharacterconcept-jmlT2gO0EiVvU6OnjQnpOcmw/'
                 /> */}
 
-                {/* <iframe src='https://my.spline.design/nexbotrobotcharacterconcept-jmlT2gO0EiVvU6OnjQnpOcmw/' frameborder='0' width='100%' height='100%'></iframe> */}
+             <iframe src='https://my.spline.design/nexbotrobotcharacterconcept-jmlT2gO0EiVvU6OnjQnpOcmw/' frameborder='0' width='100%' height='100%'></iframe> 
 
 
                 <div className="absolute left-10 bottom-30 z-10 text-left">
@@ -146,19 +148,48 @@ export default function Home() {
 
             </section>
 
-            <section
-                className='w-full'
-            >
-            <I6LandingPage />
-            </section>
 
-            
-                    
-            {/* <ScrollVelocity
+            // Frist Section End
+
+
+            // Second Section Start
+
+            <section >
+
+
+          <ScrollVelocity
                 texts={['React Bits', 'Scroll Down']}
                 velocity={100}
                 className="custom-scroll-text"
-            /> */}
+            /> 
+
+            
+            
+            
+            </section>
+
+
+            // Second Section End
+
+            // Third Section Start
+
+
+            <section>
+            
+            
+
+
+
+            
+            </section>
+
+            
+
+           
+
+            
+                    
+          
             {/* Start */}
 
         </div>
