@@ -61,7 +61,7 @@ const FooterLight = () => {
   ];
 
   return (
-    <footer className="bg-card border-t border-border relative overflow-hidden">
+    <footer className="bg-[#e3e3e3] border-t border-border relative overflow-hidden">
       {/* Newsletter Section */}
       <div className="py-20 border-b border-border">
         <div className="container mx-auto px-6">

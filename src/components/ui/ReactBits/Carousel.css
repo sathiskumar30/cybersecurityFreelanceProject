@@ -1,7 +1,7 @@
 .carousel-container {
     position: relative;
     overflow: hidden;
-    height: 400px;
+    /* height: 400px; */
     /* background-color: #e3e3e3; */
     /* border: 1px solid #555; */
     color: black;
@@ -13,7 +13,7 @@
   
   .carousel-track {
     display: flex;
-    height: 350px;
+    height: 450px;
   }
   
   .carousel-item {
