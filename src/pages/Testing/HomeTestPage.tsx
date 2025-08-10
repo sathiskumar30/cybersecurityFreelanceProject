@@ -129,20 +129,20 @@ export default function Home() {
 
 
     const itemsAgain = [
-        { content: "Text Item 1" },
-        { content: <p>Paragraph Item 2</p> },
-        { content: "Text Item 3" },
-        { content: <p>Paragraph Item 4</p> },
-        { content: "Text Item 5" },
-        { content: <p>Paragraph Item 6</p> },
-        { content: "Text Item 7" },
-        { content: <p>Paragraph Item 8</p> },
-        { content: "Text Item 9" },
-        { content: <p>Paragraph Item 10</p> },
-        { content: "Text Item 11" },
-        { content: <p>Paragraph Item 12</p> },
-        { content: "Text Item 13" },
-        { content: <p>Paragraph Item 14</p> },
+        { content: "TDetect" },
+        // { content: <p>Use the suitable Application / Software to detect any cyber security incidents within the organization. Utilize the appropriate applications or software that helps you find any occurrence of cyber security incidents.</p> },
+        { content: "Identify" },
+        // { content: <p>The first step is to identify the exact part of the organization that needs protection, by assessing the whole organization. The organization’s structure will be assessed to identify the specific department that needs to be protected.</p> },
+        { content: "Respond" },
+        // { content: <p>Develop approaches and utilize them to contain the impacts of the detected cyber security incident. Develop techniques to contain the impacts of the detected cyber security incidents.</p> },
+        { content: "Protect" },
+        // { content: <p>Once the flawed part is identified, safety measures will be implemented to avoid more damage. Start implementing the safety measures in the respective product / service that needs protection.</p> },
+        { content: "Recovery" },
+        // { content: <p>Perform the necessary processes to recover from the damages caused by the cyber security incident. Plan and implement the processes to recover from the damages caused by those cyber security incidents.</p> },
+        // { content: "Text Item 11" },
+        // { content: <p>Paragraph Item 12</p> },
+        // { content: "Text Item 13" },
+        // { content: <p>Paragraph Item 14</p> },
     ];
     return (
 
